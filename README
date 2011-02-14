@@ -1,4 +1,5 @@
 CQRS Sample with eventsourcing and RavenDB as the eventstore.
+The sample client is a console application.
 
 It's based on samples by Mark Nijhof: https://github.com/MarkNijhof/Fohjin
 Greg Young: http://github.com/gregoryyoung/m-r
