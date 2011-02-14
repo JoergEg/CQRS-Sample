@@ -1,0 +1,5 @@
+CQRS Sample with eventsourcing and RavenDB as the eventstore.
+
+It's based on samples by Mark Nijhof: https://github.com/MarkNijhof/Fohjin
+Greg Young: http://github.com/gregoryyoung/m-r
+and http://dddsamplenet.codeplex.com/
