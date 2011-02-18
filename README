@@ -1,5 +1,7 @@
 CQRS Sample with eventsourcing and RavenDB as the eventstore.
-The sample client is a console application.
+The sample client is a console application and uses RavenDB InMemory for easy start of the app - no server start is required.
+
+Visual Studio 2010 Solution on .Net Framework 4.
 
 It's based on samples by Mark Nijhof: https://github.com/MarkNijhof/Fohjin
 Greg Young: http://github.com/gregoryyoung/m-r
