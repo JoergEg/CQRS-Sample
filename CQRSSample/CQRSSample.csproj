@@ -11,7 +11,8 @@
     <RootNamespace>CQRSSample</RootNamespace>
     <AssemblyName>CQRSSample</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -40,41 +41,29 @@
   <ItemGroup>
     <Reference Include="Castle.Core, Version=2.5.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\External Libs\Castle Windsor\dotNet35\Castle.Core.dll</HintPath>
+      <HintPath>..\External Libs\Castle Windsor\dotNet40\Castle.Core.dll</HintPath>
     </Reference>
     <Reference Include="Castle.Windsor, Version=2.5.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\External Libs\Castle Windsor\dotNet35\Castle.Windsor.dll</HintPath>
+      <HintPath>..\External Libs\Castle Windsor\dotNet40\Castle.Windsor.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json.Net35, Version=4.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+    <Reference Include="Newtonsoft.Json, Version=4.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\External Libs\RavenDB\Client-3.5\Newtonsoft.Json.Net35.dll</HintPath>
+      <HintPath>..\External Libs\RavenDB\EmbeddedClient\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework, Version=2.5.9.10348, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+    <Reference Include="Raven.Client.Lightweight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\External Libs\NUnit\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="Raven.Abstractions-3.5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\External Libs\RavenDB\Client-3.5\Raven.Abstractions-3.5.dll</HintPath>
-    </Reference>
-    <Reference Include="Raven.Client.Lightweight-3.5, Version=1.0.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\External Libs\RavenDB\Client-3.5\Raven.Client.Lightweight-3.5.dll</HintPath>
+      <HintPath>..\External Libs\RavenDB\EmbeddedClient\Raven.Client.Lightweight.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Transactions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Windows\Microsoft.NET\Framework\v2.0.50727\System.Transactions.dll</HintPath>
-    </Reference>
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Specs\AggregateRootTestFixture.cs" />
     <Compile Include="Domain\AggregateRoot.cs" />
     <Compile Include="Events\IDomainEvent.cs" />
     <Compile Include="Commands\Command.cs" />
@@ -96,7 +85,8 @@
     <Compile Include="Infrastructure\DelegateAdjuster.cs" />
     <Compile Include="Infrastructure\EventDescriptor.cs" />
     <Compile Include="Infrastructure\InProcessBus.cs" />
-    <Compile Include="Infrastructure\Installers\AllTypesWithFirstInterfaceInstaller.cs" />
+    <Compile Include="Infrastructure\Installers\AllTypesWithAllInterfaceInstaller.cs" />
+    <Compile Include="Infrastructure\Installers\EventHandlerHelper.cs" />
     <Compile Include="Infrastructure\RavenDbEventStore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -114,12 +104,6 @@
     <Compile Include="ReadModel\CustomerListView.cs" />
     <Compile Include="ReadModel\HandlesEvent.cs" />
     <Compile Include="ReadModel\IReportingRepository.cs" />
-    <Compile Include="Specs\Commands\All_commands_must_be_Serializable.cs" />
-    <Compile Include="Specs\FakeRepository.cs" />
-    <Compile Include="Specs\CommandTestFixture.cs" />
-    <Compile Include="Specs\TestExtensions.cs" />
-    <Compile Include="Specs\when_creating_a_new_customer.cs" />
-    <Compile Include="Specs\when_non_existing_customer_is_relocating.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

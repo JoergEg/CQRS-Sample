@@ -18,19 +18,17 @@ namespace CQRSSample.Infrastructure
 
     public class InProcessBus : IBus
     {
-        private readonly IDocumentStore _documentStore;
         private readonly IWindsorContainer _container;
         private readonly Dictionary<Type, List<Action<DomainEvent>>> _routes = new Dictionary<Type, List<Action<DomainEvent>>>();
 
-        public InProcessBus(IDocumentStore documentStore, IWindsorContainer container)
+        public InProcessBus(IWindsorContainer container)
         {
-            _documentStore = documentStore;
             _container = container;
         }
 
         public void Send<T>(T command) where T : Command
         {
-            var transactionHandler = new TransactionHandler(_documentStore);
+            var transactionHandler = new TransactionHandler();
             transactionHandler.Execute(command, GetCommandHandlerForCommand<T>());
         }
 

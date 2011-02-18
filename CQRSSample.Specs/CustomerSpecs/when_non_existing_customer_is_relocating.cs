@@ -4,7 +4,7 @@ using CQRSSample.Domain;
 using CQRSSample.Events;
 using NUnit.Framework;
 
-namespace CQRSSample.Specs
+namespace CQRSSample.Specs.CustomerSpecs
 {
     public class when_non_existing_customer_is_relocating : AggregateRootTestFixture<Customer>
     {

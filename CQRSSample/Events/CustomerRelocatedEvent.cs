@@ -2,6 +2,7 @@ using System;
 
 namespace CQRSSample.Events
 {
+    [Serializable]
     public class CustomerRelocatedEvent : DomainEvent
     {
         public readonly string Street;

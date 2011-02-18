@@ -7,7 +7,7 @@ using CQRSSample.Commands;
 using CQRSSample.Infrastructure;
 using CQRSSample.ReadModel;
 using Raven.Client;
-using Raven.Client.Document;
+using Raven.Client.Client;
 
 namespace CQRSSample.App
 {
@@ -15,12 +15,11 @@ namespace CQRSSample.App
     {
         static void Main()
         {
-            var store = new DocumentStore{ Url = "http://localhost:8080" }; 
+            //var store = new DocumentStore{ Url = "http://localhost:8080" };
+            //run RavenDB InMemory
+            var store = new EmbeddableDocumentStore {RunInMemory = true};
 
             var container = BootStrapper.BootStrap(store);
-
-            //TODO: .Net Framework 4 -> Raven.Client.Embedded.dll referenzieren und InMemory laufen lassen
-            //var store = new EmbeddableDocumentStore {RunInMemory = true; }
 
             store.Initialize();
 
@@ -28,13 +27,13 @@ namespace CQRSSample.App
             var aggregateId = Guid.NewGuid();
             try
             {
-                //Customer anlegen (Write/Command)
+                //create customer (Write/Command)
                 CreateCustomer(bus, aggregateId);
 
-                //Customer zieht um (Write/Command)
+                //Customer relocating (Write/Command)
                 RelocateCustomer(bus, aggregateId);
 
-                //alle Customer anzeigen (Read/Query)
+                //show all customers [in memory] (Read/Query)
                 ShowCustomerListView(store);
             }
             catch (Exception ex)

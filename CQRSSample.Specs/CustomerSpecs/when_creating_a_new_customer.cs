@@ -6,7 +6,7 @@ using CQRSSample.Domain;
 using CQRSSample.Events;
 using NUnit.Framework;
 
-namespace CQRSSample.Specs
+namespace CQRSSample.Specs.CustomerSpecs
 {
     public class when_creating_a_new_customer : CommandTestFixture<CreateCustomerCommand, CreateCustomerCommandHandler, Customer>
     {

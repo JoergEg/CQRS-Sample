@@ -4,7 +4,7 @@ using CQRSSample.Events;
 
 namespace CQRSSample.ReadModel
 {
-    public interface HandlesEvent<T> where T : IDomainEvent
+    public interface HandlesEvent<in T> where T : IDomainEvent
     {
         void Handle(T domainEvent);
     }
