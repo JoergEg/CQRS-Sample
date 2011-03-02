@@ -14,6 +14,8 @@ namespace CQRSSample.Infrastructure
     {
         public static IWindsorContainer BootStrap(IDocumentStore store)
         {
+            store.Initialize();
+
             var container = new WindsorContainer();
 
             container.Register(Component.For<IDocumentStore>().Instance(store));

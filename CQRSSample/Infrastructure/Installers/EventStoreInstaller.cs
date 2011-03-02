@@ -5,9 +5,7 @@ using Castle.Windsor;
 using EventStore;
 using EventStore.Dispatcher;
 using EventStore.Persistence;
-using EventStore.Persistence.SqlPersistence;
 using EventStore.Serialization;
-using Newtonsoft.Json;
 using Raven.Client;
 
 namespace CQRSSample.Infrastructure.Installers

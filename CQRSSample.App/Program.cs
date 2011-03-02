@@ -1,6 +1,7 @@
 ﻿//based on samples by Mark Nijhof: https://github.com/MarkNijhof/Fohjin
 //Greg Young: http://github.com/gregoryyoung/m-r
 //and http://dddsamplenet.codeplex.com/
+//using EventStore by Jonathan Oliver https://github.com/joliver/EventStore
 
 using System;
 using Castle.Windsor;
@@ -8,7 +9,6 @@ using CQRSSample.Commands;
 using CQRSSample.Infrastructure;
 using CQRSSample.ReadModel;
 using Raven.Client;
-using Raven.Client.Client;
 using Raven.Client.Document;
 
 namespace CQRSSample.App
