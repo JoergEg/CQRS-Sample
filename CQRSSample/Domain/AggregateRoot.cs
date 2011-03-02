@@ -5,7 +5,7 @@ using CQRSSample.Events;
 
 namespace CQRSSample.Domain
 {
-    public abstract class AggregateRoot
+    public abstract class AggregateRoot : IAggregateRoot
     {
         private readonly List<DomainEvent> _changes = new List<DomainEvent>();
 
@@ -24,7 +24,10 @@ namespace CQRSSample.Domain
 
         public void LoadFromHistory(IEnumerable<DomainEvent> history)
         {
-            foreach (var e in history) ApplyChange(e, false);
+            foreach (var e in history)
+            {
+                ApplyChange(e, false);
+            }
         }
 
         protected void ApplyChange(DomainEvent domainEvent)
@@ -36,7 +39,7 @@ namespace CQRSSample.Domain
         {
             //TODO: .Net Framework 4 -> dynamic Feature
             //this.AsDynamic().Apply(domainEvent);
-
+            
             if (domainEvent == null)
                 throw new ArgumentNullException("domainEvent");
             var eventTypeName = domainEvent.GetType().Name;

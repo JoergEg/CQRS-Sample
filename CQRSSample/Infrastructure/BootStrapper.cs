@@ -5,16 +5,14 @@ using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
 using CQRSSample.Events;
-using CQRSSample.Infrastructure.Installers;
 using CQRSSample.ReadModel;
 using Raven.Client;
-using Raven.Client.Document;
 
 namespace CQRSSample.Infrastructure
 {
     public class BootStrapper
     {
-        public static IWindsorContainer BootStrap(DocumentStore store)
+        public static IWindsorContainer BootStrap(IDocumentStore store)
         {
             var container = new WindsorContainer();
 
@@ -77,7 +75,7 @@ namespace CQRSSample.Infrastructure
         }
 
         public Action<TMessage> CreatePublishAction<TMessage, TMessageHandler>(TMessageHandler messageHandler)
-            where TMessage : IDomainEvent
+            where TMessage : DomainEvent
             where TMessageHandler : HandlesEvent<TMessage>
         {
             return messageHandler.Handle;

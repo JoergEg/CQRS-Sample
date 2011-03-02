@@ -3,11 +3,13 @@
 //and http://dddsamplenet.codeplex.com/
 
 using System;
+using Castle.Windsor;
 using CQRSSample.Commands;
 using CQRSSample.Infrastructure;
 using CQRSSample.ReadModel;
 using Raven.Client;
 using Raven.Client.Client;
+using Raven.Client.Document;
 
 namespace CQRSSample.App
 {
@@ -15,18 +17,18 @@ namespace CQRSSample.App
     {
         static void Main()
         {
-            //var store = new DocumentStore{ Url = "http://localhost:8080" };
+            var store = new DocumentStore{ Url = "http://localhost:8080" };
             //run RavenDB InMemory
-            var store = new EmbeddableDocumentStore {RunInMemory = true};
+            //var store = new EmbeddableDocumentStore {RunInMemory = true};
 
-            var container = BootStrapper.BootStrap(store);
-
-            store.Initialize();
-
-            var bus = container.Resolve<IBus>();
-            var aggregateId = Guid.NewGuid();
+            IWindsorContainer container = null;
             try
             {
+                container = BootStrapper.BootStrap(store);
+
+                var bus = container.Resolve<IBus>();
+                var aggregateId = Guid.NewGuid();
+
                 //create customer (Write/Command)
                 CreateCustomer(bus, aggregateId);
 
@@ -36,13 +38,17 @@ namespace CQRSSample.App
                 //show all customers [in memory] (Read/Query)
                 ShowCustomerListView(store);
             }
+            catch(System.Net.WebException ex)
+            {
+                Console.WriteLine(@"Unable to connect to RavenDB Server. Have you started 'RavenDB\Server\Raven.Server.exe'?");
+            }
             catch (Exception ex)
             {
                 Console.WriteLine("Fehler: " + ex.Message);
             }
             finally
             {
-                container.Dispose();
+                if (container != null) container.Dispose();
             }
             Console.WriteLine("Press any key to finish.");
             Console.ReadLine();

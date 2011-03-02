@@ -13,7 +13,7 @@ namespace CQRSSample.Specs
             return events.ToList()[--value];
         }
 
-        public static void CountIs(this IEnumerable<IDomainEvent> events, int value)
+        public static void CountIs(this IEnumerable<DomainEvent> events, int value)
         {
             Assert.AreEqual(value, events.ToList().Count());
         }
@@ -53,15 +53,15 @@ namespace CQRSSample.Specs
             return (TDomainEvent)events.Last();
         }        
         
-        public static object LastMinus(this IEnumerable<IDomainEvent> events, int minus)
+        public static object LastMinus(this IEnumerable<DomainEvent> events, int minus)
         {
             return events.ToList()[events.Count() - 1 - minus];
         }        
         
-        public static TDomainEvent LastMinus<TDomainEvent>(this IEnumerable<IDomainEvent> events, int minus)
-        {
-            return (TDomainEvent)events.ToList()[events.Count() - 1 - minus];
-        }
+        //public static TDomainEvent LastMinus<TDomainEvent>(this IEnumerable<DomainEvent> events, int minus)
+        //{
+        //    return (TDomainEvent)events.ToList()[events.Count() - 1 - minus];
+        //}
         
         public static TDomainEvent As<TDomainEvent>(this object theObject)
         {

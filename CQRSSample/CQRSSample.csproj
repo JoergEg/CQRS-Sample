@@ -47,13 +47,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\External Libs\Castle Windsor\dotNet40\Castle.Windsor.dll</HintPath>
     </Reference>
+    <Reference Include="EventStore">
+      <HintPath>..\External Libs\EventStore\bin\EventStore.dll</HintPath>
+    </Reference>
+    <Reference Include="EventStore.Persistence.RavenPersistence">
+      <HintPath>..\External Libs\EventStore\bin\EventStore.Persistence.RavenPersistence.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\External Libs\RavenDB\EmbeddedClient\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Raven.Client.Lightweight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\External Libs\RavenDB\EmbeddedClient\Raven.Client.Lightweight.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -65,7 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\AggregateRoot.cs" />
-    <Compile Include="Events\IDomainEvent.cs" />
+    <Compile Include="Events\DomainEvent.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\RelocatingCustomerCommand.cs" />
     <Compile Include="Events\CustomerRelocatedEvent.cs" />
@@ -87,7 +89,9 @@
     <Compile Include="Infrastructure\InProcessBus.cs" />
     <Compile Include="Infrastructure\Installers\AllTypesWithAllInterfaceInstaller.cs" />
     <Compile Include="Infrastructure\Installers\EventHandlerHelper.cs" />
+    <Compile Include="Infrastructure\Installers\EventStoreInstaller.cs" />
     <Compile Include="Infrastructure\RavenDbEventStore.cs" />
+    <Compile Include="Infrastructure\RavenInMemoryPersistenceFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
