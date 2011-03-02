@@ -47,16 +47,20 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\External Libs\Castle Windsor\dotNet40\Castle.Windsor.dll</HintPath>
     </Reference>
+    <Reference Include="CommonDomain">
+      <HintPath>..\External Libs\CommonDomain\bin\CommonDomain.dll</HintPath>
+    </Reference>
     <Reference Include="EventStore, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7735eb81c0bd9948, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\External Libs\EventStore\bin\EventStore.dll</HintPath>
+      <HintPath>..\External Libs\CommonDomain\bin\EventStore.dll</HintPath>
     </Reference>
     <Reference Include="EventStore.Persistence.RavenPersistence, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7735eb81c0bd9948, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\External Libs\EventStore\bin\EventStore.Persistence.RavenPersistence.dll</HintPath>
+      <HintPath>..\External Libs\CommonDomain\bin\EventStore.Persistence.RavenPersistence.dll</HintPath>
     </Reference>
-    <Reference Include="EventStore.Serialization.Json">
-      <HintPath>..\External Libs\EventStore\bin\EventStore.Serialization.Json.dll</HintPath>
+    <Reference Include="EventStore.Serialization.Json, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7735eb81c0bd9948, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External Libs\CommonDomain\bin\EventStore.Serialization.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -67,7 +71,6 @@
     <Reference Include="System.Data.DataSetExtensions" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\AggregateRoot.cs" />
     <Compile Include="Events\DomainEvent.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\RelocatingCustomerCommand.cs" />
@@ -80,19 +83,16 @@
     <Compile Include="CommandHandlers\TransactionHandler.cs" />
     <Compile Include="Commands\CreateCustomerCommand.cs" />
     <Compile Include="Domain\Customer.cs" />
-    <Compile Include="Domain\IAggregateRoot.cs" />
-    <Compile Include="Domain\IEventStore.cs" />
-    <Compile Include="Domain\IRepository.cs" />
     <Compile Include="Events\CustomerCreatedEvent.cs" />
+    <Compile Include="Infrastructure\AggregateFactory.cs" />
     <Compile Include="Infrastructure\BootStrapper.cs" />
     <Compile Include="Infrastructure\DelegateAdjuster.cs" />
     <Compile Include="Infrastructure\EventDescriptor.cs" />
+    <Compile Include="Infrastructure\FakeBus.cs" />
     <Compile Include="Infrastructure\InProcessBus.cs" />
     <Compile Include="Infrastructure\Installers\AllTypesWithAllInterfaceInstaller.cs" />
     <Compile Include="Infrastructure\Installers\EventHandlerHelper.cs" />
     <Compile Include="Infrastructure\Installers\EventStoreInstaller.cs" />
-    <Compile Include="Infrastructure\RavenDbEventStore.cs" />
-    <Compile Include="Infrastructure\RavenInMemoryPersistenceFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

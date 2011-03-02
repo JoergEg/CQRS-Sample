@@ -91,16 +91,20 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\External Libs\Castle Windsor\dotNet40\Castle.Windsor.dll</HintPath>
     </Reference>
+    <Reference Include="CommonDomain">
+      <HintPath>..\External Libs\CommonDomain\bin\CommonDomain.dll</HintPath>
+    </Reference>
     <Reference Include="EventStore, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7735eb81c0bd9948, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\External Libs\EventStore\bin\EventStore.dll</HintPath>
+      <HintPath>..\External Libs\CommonDomain\bin\EventStore.dll</HintPath>
     </Reference>
     <Reference Include="EventStore.Persistence.RavenPersistence, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7735eb81c0bd9948, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\External Libs\EventStore\bin\EventStore.Persistence.RavenPersistence.dll</HintPath>
+      <HintPath>..\External Libs\CommonDomain\bin\EventStore.Persistence.RavenPersistence.dll</HintPath>
     </Reference>
-    <Reference Include="EventStore.Serialization.Json">
-      <HintPath>..\External Libs\EventStore\bin\EventStore.Serialization.Json.dll</HintPath>
+    <Reference Include="EventStore.Serialization.Json, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7735eb81c0bd9948, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External Libs\CommonDomain\bin\EventStore.Serialization.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">

@@ -1,7 +1,12 @@
 using System;
+using System.Collections.Generic;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
+using CommonDomain.Core;
+using CommonDomain.Persistence;
+using CommonDomain.Persistence.EventStore;
+using CQRSSample.Events;
 using EventStore;
 using EventStore.Dispatcher;
 using EventStore.Persistence;
@@ -19,22 +24,33 @@ namespace CQRSSample.Infrastructure.Installers
 
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            container.Register(Component.For<IStoreEvents>().Instance(GetInitializedEventStore(container.Resolve<IDocumentStore>())));
+            var engine = new InMemoryPersistenceEngine();
+            engine.Initialize();
+
+            var eventStore = GetInitializedEventStore();
+            var repository = new EventStoreRepository(eventStore, new AggregateFactory(), new ConflictDetector());
+            
+            container.Register(Component.For<IStoreEvents>().Instance(eventStore));
+            container.Register(Component.For<IRepository>().Instance(repository));
         }
 
-        private IStoreEvents GetInitializedEventStore(IDocumentStore store)
+        private IStoreEvents GetInitializedEventStore()
         {
-            var persistence = BuildPersistenceEngine(store);
+            var persistence = BuildPersistenceEngine();
             persistence.Initialize();
 
-            var dispatcher = BuildDispatcher(persistence);
+            //TODO
+            var publishedEvents = new List<DomainEvent>();
+            var dispatcher = BuildDispatcher(new FakeBus(publishedEvents), persistence);
             return new OptimisticEventStore(persistence, dispatcher);
         }
 
-        private IPersistStreams BuildPersistenceEngine(IDocumentStore store)
+        private IPersistStreams BuildPersistenceEngine()
         {
             //return new SqlPersistenceFactory("EventStore", BuildSerializer()).Build();
-            return new RavenInMemoryPersistenceFactory(store, BuildSerializer()).Build();
+            //return new RavenInMemoryPersistenceFactory(store, BuildSerializer()).Build();
+            
+            return new InMemoryPersistenceEngine();
         }
 
         private ISerialize BuildSerializer()
@@ -44,12 +60,14 @@ namespace CQRSSample.Infrastructure.Installers
             return new RijndaelSerializer(serializer, _encryptionKey);
         }
 
-        private IDispatchCommits BuildDispatcher(IPersistStreams persistence)
+        private IDispatchCommits BuildDispatcher(IPublishMessages bus, IPersistStreams persistence)
         {
-            return new AsynchronousDispatcher(
-                new DelegateMessagePublisher(DispatchCommit),
-                persistence,
-                OnDispatchError);
+            //return new AsynchronousDispatcher(
+            //    new DelegateMessagePublisher(DispatchCommit),
+            //    persistence,
+            //    OnDispatchError);
+
+            return new SynchronousDispatcher(bus, persistence);
         }
 
         private void DispatchCommit(Commit commit)

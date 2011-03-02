@@ -18,13 +18,15 @@ namespace CQRSSample.App
         static void Main()
         {
             var store = new DocumentStore{ Url = "http://localhost:8080" };
+            store.Initialize();
+
             //run RavenDB InMemory
             //var store = new EmbeddableDocumentStore {RunInMemory = true};
 
             IWindsorContainer container = null;
             try
             {
-                container = BootStrapper.BootStrap(store);
+                container = BootStrapper.BootStrap();
 
                 var bus = container.Resolve<IBus>();
                 var aggregateId = Guid.NewGuid();
