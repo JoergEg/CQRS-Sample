@@ -10,4 +10,4 @@
 /CQRSSample.Specs/bin
 /CQRSSample.Specs/obj
 /External Libs/RavenDB/Server/Data
-/External Libs/RavenDB/Server/Raven.Server.log
+/External Libs/RavenDB/Server/Raven.Server.log*
