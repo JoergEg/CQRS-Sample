@@ -4,10 +4,12 @@ using CQRSSample.Commands;
 
 namespace CQRSSample.CommandHandlers
 {
-    public interface Handles<T> where T : Command
+    public interface Handles<in T> : Handles where T : Command
     { 
         void Handle(T command); 
     }
+
+    public interface Handles{}
 }
 
 // ReSharper restore InconsistentNaming

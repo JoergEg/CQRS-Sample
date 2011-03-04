@@ -12,11 +12,11 @@ namespace CQRSSample.Infrastructure
 {
     public class BootStrapper
     {
-        public static IWindsorContainer BootStrap()
+        public static IWindsorContainer BootStrap(IDocumentStore store)
         {
             var container = new WindsorContainer();
 
-            //container.Register(Component.For<IDocumentStore>().Instance(store));
+            container.Register(Component.For<IDocumentStore>().Instance(store));
             container.Register(Component.For<IWindsorContainer>().Instance(container));
 
             // adds and configures all components using WindsorInstallers from executing assembly  

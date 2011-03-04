@@ -27,21 +27,26 @@ namespace CQRSSample.Infrastructure.Installers
             var engine = new InMemoryPersistenceEngine();
             engine.Initialize();
 
-            var eventStore = GetInitializedEventStore();
+            //Bus
+            var bus = new InProcessBus(container);
+            //container.Register(Component.For<IBus>().ImplementedBy<InProcessBus>().LifeStyle.Singleton);
+            container.Register(Component.For<IBus>().Instance(bus));
+            //container.Register(Component.For<IPublishMessages>().Instance(bus));
+
+
+            var eventStore = GetInitializedEventStore(bus);
             var repository = new EventStoreRepository(eventStore, new AggregateFactory(), new ConflictDetector());
             
             container.Register(Component.For<IStoreEvents>().Instance(eventStore));
             container.Register(Component.For<IRepository>().Instance(repository));
         }
 
-        private IStoreEvents GetInitializedEventStore()
+        private IStoreEvents GetInitializedEventStore(IPublishMessages bus)
         {
             var persistence = BuildPersistenceEngine();
             persistence.Initialize();
 
-            //TODO
-            var publishedEvents = new List<DomainEvent>();
-            var dispatcher = BuildDispatcher(new FakeBus(publishedEvents), persistence);
+            var dispatcher = BuildDispatcher(bus, persistence);
             return new OptimisticEventStore(persistence, dispatcher);
         }
 

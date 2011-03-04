@@ -17,8 +17,9 @@ namespace CQRSSample.App
     {
         static void Main()
         {
-            var store = new DocumentStore{ Url = "http://localhost:8080" };
-            store.Initialize();
+            //currently it uses an inmemory event store and persists the read side (views) to RavenDB Server -> should change
+            var viewStore = new DocumentStore{ Url = "http://localhost:8080" };
+            viewStore.Initialize();
 
             //run RavenDB InMemory
             //var store = new EmbeddableDocumentStore {RunInMemory = true};
@@ -26,7 +27,7 @@ namespace CQRSSample.App
             IWindsorContainer container = null;
             try
             {
-                container = BootStrapper.BootStrap();
+                container = BootStrapper.BootStrap(viewStore);
 
                 var bus = container.Resolve<IBus>();
                 var aggregateId = Guid.NewGuid();
@@ -38,7 +39,7 @@ namespace CQRSSample.App
                 RelocateCustomer(bus, aggregateId);
 
                 //show all customers [in memory] (Read/Query)
-                ShowCustomerListView(store);
+                ShowCustomerListView(viewStore);
             }
             catch(System.Net.WebException ex)
             {

@@ -83,6 +83,7 @@
     <Compile Include="Commands\All_commands_must_be_Serializable.cs" />
     <Compile Include="CommandTestFixture.cs" />
     <Compile Include="Events\All_domain_events_must_be_Serializable.cs" />
+    <Compile Include="FakeBus.cs" />
     <Compile Include="FakeRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestExtensions.cs" />

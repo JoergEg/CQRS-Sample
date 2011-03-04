@@ -88,9 +88,8 @@
     <Compile Include="Infrastructure\BootStrapper.cs" />
     <Compile Include="Infrastructure\DelegateAdjuster.cs" />
     <Compile Include="Infrastructure\EventDescriptor.cs" />
-    <Compile Include="Infrastructure\FakeBus.cs" />
     <Compile Include="Infrastructure\InProcessBus.cs" />
-    <Compile Include="Infrastructure\Installers\AllTypesWithAllInterfaceInstaller.cs" />
+    <Compile Include="Infrastructure\Installers\CommandHandlerInstaller.cs" />
     <Compile Include="Infrastructure\Installers\EventHandlerHelper.cs" />
     <Compile Include="Infrastructure\Installers\EventStoreInstaller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

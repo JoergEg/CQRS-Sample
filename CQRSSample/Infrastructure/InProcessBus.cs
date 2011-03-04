@@ -1,22 +1,21 @@
 using System;
 using System.Collections.Generic;
-using System.Threading;
 using Castle.Windsor;
 using CQRSSample.CommandHandlers;
 using CQRSSample.Commands;
 using CQRSSample.Events;
-using Raven.Client;
+using EventStore;
+using EventStore.Dispatcher;
 
 namespace CQRSSample.Infrastructure
 {
     public interface IBus
     {
         void Send<T>(T command) where T : Command;
-        void Publish(DomainEvent @event);
         void RegisterHandler<T>(Action<T> handler) where T : DomainEvent;
     }
 
-    public class InProcessBus : IBus
+    public class InProcessBus : IBus, IPublishMessages
     {
         private readonly IWindsorContainer _container;
         private readonly Dictionary<Type, List<Action<DomainEvent>>> _routes = new Dictionary<Type, List<Action<DomainEvent>>>();
@@ -30,19 +29,6 @@ namespace CQRSSample.Infrastructure
         {
             var transactionHandler = new TransactionHandler();
             transactionHandler.Execute(command, GetCommandHandlerForCommand<T>());
-        }
-
-        public void Publish(DomainEvent @event)
-        {
-            List<Action<DomainEvent>> handlers;
-            if (!_routes.TryGetValue(@event.GetType(), out handlers)) return;
-            foreach (var handler in handlers)
-            {
-                //dispatch on thread pool for added awesomeness
-                //var handler1 = handler;
-                //ThreadPool.QueueUserWorkItem(x => handler1(@event));
-                handler(@event);
-            }
         }
 
         public void RegisterHandler<T>(Action<T> handler) where T : DomainEvent
@@ -59,6 +45,27 @@ namespace CQRSSample.Infrastructure
         private Handles<T> GetCommandHandlerForCommand<T>() where T : Command
         {
             return _container.Resolve<Handles<T>>();
+        }
+
+        public void Publish(Commit commit)
+        {
+            foreach (var @event in commit.Events)
+            {
+                List<Action<DomainEvent>> handlers;
+
+                if (!_routes.TryGetValue(@event.Body.GetType(), out handlers)) return;
+                foreach (var handler in handlers)
+                {
+                    //dispatch on thread pool for added awesomeness
+                    //var handler1 = handler;
+                    //ThreadPool.QueueUserWorkItem(x => handler1(@event));
+                    handler((DomainEvent)@event.Body);
+                }
+            }
+        }
+
+        public void Dispose()
+        {
         }
     }
 }

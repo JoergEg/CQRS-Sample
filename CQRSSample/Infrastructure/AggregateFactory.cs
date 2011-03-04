@@ -8,7 +8,8 @@ namespace CQRSSample.Infrastructure
     {
         public IAggregate Build(Type type, Guid id, IMemento snapshot)
         {
-            return Activator.CreateInstance(type, id) as IAggregate; // todo
+            //return Activator.CreateInstance(type, id) as IAggregate; 
+            return Activator.CreateInstance(type) as IAggregate;    // todo
         }
     }
 }

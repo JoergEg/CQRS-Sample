@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using CQRSSample.CommandHandlers;
 using CQRSSample.Commands;
 using CQRSSample.Domain;
