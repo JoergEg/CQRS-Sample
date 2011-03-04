@@ -1,18 +1,20 @@
 // ReSharper disable InconsistentNaming
 using System;
+using System.Collections;
 using System.Collections.Generic;
-using CQRSSample.Domain;
+using Castle.Core;
+using CommonDomain;
 using CQRSSample.Events;
 using NUnit.Framework;
 
 namespace CQRSSample.Specs
 {
     [TestFixture]
-    public abstract class AggregateRootTestFixture<T> where T : AggregateRoot, new()
+    public abstract class AggregateRootTestFixture<T> where T : IAggregate, new()
     {
         protected Exception Caught;
         protected T Sut;
-        protected List<DomainEvent> Events;
+        protected ICollection Events;
 
         protected abstract IEnumerable<DomainEvent> Given();
         protected abstract void When();
@@ -21,12 +23,12 @@ namespace CQRSSample.Specs
         public void Setup()
         {
             Sut = new T();
-            Sut.LoadFromHistory(Given());
+            Given().ForEach(x => Sut.ApplyEvent(x));
 
             try
             {
                 When();
-                Events = new List<DomainEvent>(Sut.GetChanges());
+                Events = Sut.GetUncommittedEvents();
             }
             catch (Exception ex)
             {

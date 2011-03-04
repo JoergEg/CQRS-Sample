@@ -1,5 +1,8 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using Castle.Core;
+using CommonDomain;
 using CQRSSample.CommandHandlers;
 using CQRSSample.Commands;
 using CQRSSample.Domain;
@@ -12,13 +15,13 @@ namespace CQRSSample.Specs
     public abstract class CommandTestFixture<TCommand, TCommandHandler, TAggregateRoot>
         where TCommand : Command
         where TCommandHandler : class, Handles<TCommand>
-        where TAggregateRoot : AggregateRoot, new()
+        where TAggregateRoot : IAggregate, new()
     {
         protected TAggregateRoot AggregateRoot;
         protected Handles<TCommand> CommandHandler;
         protected Exception CaughtException;
-        protected IEnumerable<DomainEvent> PublishedEvents;
-        protected FakeRepository<TAggregateRoot> Repository;
+        protected ICollection PublishedEvents;
+        protected FakeRepository Repository;
         protected virtual void SetupDependencies() { }
 
         protected virtual IEnumerable<DomainEvent> Given()
@@ -33,10 +36,10 @@ namespace CQRSSample.Specs
         [SetUp]
         public void Setup()
         {
-            Repository = new FakeRepository<TAggregateRoot>();
+            Repository = new FakeRepository();
             CaughtException = new ThereWasNoExceptionButOneWasExpectedException();
             AggregateRoot = new TAggregateRoot();
-            AggregateRoot.LoadFromHistory(Given());
+            Given().ForEach(x => AggregateRoot.ApplyEvent(x));
 
             CommandHandler = BuildCommandHandler();
             SetupDependencies();
@@ -44,9 +47,9 @@ namespace CQRSSample.Specs
             {
                 CommandHandler.Handle(When());
                 if (Repository.SavedAggregate == null)
-                    PublishedEvents = AggregateRoot.GetChanges();
+                    PublishedEvents = AggregateRoot.GetUncommittedEvents();
                 else
-                    PublishedEvents = Repository.SavedAggregate.GetChanges();
+                    PublishedEvents = Repository.SavedAggregate.GetUncommittedEvents();
             }
             catch (Exception exception)
             {

@@ -1,3 +1,4 @@
+using System;
 using CQRSSample.Commands;
 using CQRSSample.Domain;
 using CommonDomain.Persistence;
@@ -15,9 +16,11 @@ namespace CQRSSample.CommandHandlers
 
         public void Handle(RelocatingCustomerCommand command)
         {
-            var customer = _repository.GetById<Customer>(command.Id, command.Version);
+            //TODO: Version
+            const int version = 0;
+            var customer = _repository.GetById<Customer>(command.Id, version);
             customer.RelocateCustomer(command.Street, command.Streetnumber, command.PostalCode, command.City);
-            _repository.Save(customer, customer.Version);
+            _repository.Save(customer, Guid.NewGuid(), null);
         }
     }
 }

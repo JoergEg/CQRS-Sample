@@ -63,6 +63,10 @@
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core, Version=2.5.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
+    <Reference Include="CommonDomain">
+      <HintPath>..\External Libs\CommonDomain\bin\CommonDomain.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\External Libs\NUnit\nunit.framework.dll</HintPath>
     </Reference>

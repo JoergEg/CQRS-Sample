@@ -1,20 +1,22 @@
 using System;
-using CQRSSample.Domain;
+using System.Collections.Generic;
+using CommonDomain;
+using CommonDomain.Persistence;
 
 namespace CQRSSample.Specs
 {
-    public class FakeRepository<T> : IRepository<T> where T : AggregateRoot, new()
+    public class FakeRepository : IRepository
     {
-        public T SavedAggregate { get; set; }
+        public IAggregate SavedAggregate { get; set; }
 
-        public void Save(T aggregate, int expectedVersion)
+        public TAggregate GetById<TAggregate>(Guid id, int version) where TAggregate : class, IAggregate
         {
-            SavedAggregate = aggregate;
+            return Activator.CreateInstance(typeof(TAggregate), id) as TAggregate;
         }
 
-        public T GetById(Guid id)
+        public void Save(IAggregate aggregate, Guid commitId, Action<IDictionary<string, object>> updateHeaders)
         {
-            return new T();
+            SavedAggregate = aggregate;
         }
     }
 }

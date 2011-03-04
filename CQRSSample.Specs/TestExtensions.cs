@@ -1,5 +1,5 @@
 using System;
-using System.Collections.Generic;
+using System.Collections;
 using CQRSSample.Events;
 using System.Linq;
 using NUnit.Framework;
@@ -8,14 +8,14 @@ namespace CQRSSample.Specs
 {
     public static class TestExtensions
     {
-        public static DomainEvent Number(this IEnumerable<DomainEvent> events, int value)
+        public static DomainEvent Number(this ICollection events, int value)
         {
-            return events.ToList()[--value];
+            return (DomainEvent)events.Cast<object>().ToList()[--value];
         }
 
-        public static void CountIs(this IEnumerable<DomainEvent> events, int value)
+        public static void CountIs(this ICollection events, int value)
         {
-            Assert.AreEqual(value, events.ToList().Count());
+            Assert.AreEqual(value, events.Count);
         }
 
         public static void WillBeOfType<TType>(this object theEvent)
@@ -48,14 +48,19 @@ namespace CQRSSample.Specs
             Assert.AreEqual(message, theException.Message);
         }        
         
-        public static TDomainEvent Last<TDomainEvent>(this IEnumerable<DomainEvent> events) where TDomainEvent : DomainEvent
+        public static TDomainEvent Last<TDomainEvent>(this ICollection events) where TDomainEvent : DomainEvent
         {
             return (TDomainEvent)events.Last();
-        }        
-        
-        public static object LastMinus(this IEnumerable<DomainEvent> events, int minus)
+        }
+
+        public static object Last(this ICollection events)
         {
-            return events.ToList()[events.Count() - 1 - minus];
+            return events.Cast<object>().Last();
+        }
+
+        public static object LastMinus(this ICollection events, int minus)
+        {
+            return events.Cast<object>().ToList()[events.Count - 1 - minus];
         }        
         
         //public static TDomainEvent LastMinus<TDomainEvent>(this IEnumerable<DomainEvent> events, int minus)

@@ -1,3 +1,5 @@
+using System;
+using CommonDomain.Persistence;
 using CQRSSample.Commands;
 using CQRSSample.Domain;
 
@@ -5,9 +7,9 @@ namespace CQRSSample.CommandHandlers
 {
     public class CreateCustomerCommandHandler : Handles<CreateCustomerCommand>
     {
-        private readonly IRepository<Customer> _repository;
+        private readonly IRepository _repository;
 
-        public CreateCustomerCommandHandler(IRepository<Customer> repository)
+        public CreateCustomerCommandHandler(IRepository repository)
         {
             _repository = repository;
         }
@@ -18,7 +20,7 @@ namespace CQRSSample.CommandHandlers
                                           new Address(command.Street, command.StreetNumber,
                                                       command.PostalCode, command.City),
                                           new PhoneNumber(command.PhoneNumber));
-            _repository.Save(client, -1);
+            _repository.Save(client, Guid.NewGuid(), null);
         }
     }
 }
