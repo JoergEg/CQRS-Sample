@@ -25,10 +25,9 @@ namespace CQRSSample.ReadModel
 
         public void Handle(CustomerCreatedEvent @event)
         {
-            var dto = new CustomerListDto { Id = @event.AggregateId, City = @event.City, Name = @event.CustomerName };
-
             using(var session = _documentStore.OpenSession())
-            { 
+            {
+                var dto = new CustomerListDto { Id = @event.AggregateId, City = @event.City, Name = @event.CustomerName };
                 session.Store(dto);
                 session.SaveChanges();
             }

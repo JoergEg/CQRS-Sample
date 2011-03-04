@@ -13,12 +13,15 @@ namespace CQRSSample.CommandHandlers
             where TCommandHandler : Handles<TCommand> 
             where TCommand : Command
         {
-            using (var tx = new TransactionScope())
-            {
-                commandHandler.Handle(command);
+            //using (var tx = new TransactionScope())
+            //{
+            //    commandHandler.Handle(command);
 
-                tx.Complete();
-            }
+            //    tx.Complete();
+            //}
+
+            //TODO
+            commandHandler.Handle(command);
 
             //try
             //{
