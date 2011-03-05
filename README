@@ -1,4 +1,4 @@
-CQRS Sample with eventsourcing, RavenDB for the read side and currently an inmemory eventstore.
+CQRS Sample with eventsourcing, RavenDB as eventstore and for the read side.
 The sample client is a console application and uses RavenDB in server mode - don't forget to start RavenDB.Server.exe
 
 Visual Studio 2010 Solution on .Net Framework 4.
