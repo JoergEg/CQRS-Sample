@@ -10,6 +10,7 @@ using CQRSSample.Events;
 using EventStore;
 using EventStore.Dispatcher;
 using EventStore.Persistence;
+using EventStore.Persistence.RavenPersistence;
 using EventStore.Serialization;
 using Raven.Client;
 
@@ -24,9 +25,6 @@ namespace CQRSSample.Infrastructure.Installers
 
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            var engine = new InMemoryPersistenceEngine();
-            engine.Initialize();
-
             //Bus
             var bus = new InProcessBus(container);
             //container.Register(Component.For<IBus>().ImplementedBy<InProcessBus>().LifeStyle.Singleton);
@@ -53,9 +51,9 @@ namespace CQRSSample.Infrastructure.Installers
         private IPersistStreams BuildPersistenceEngine()
         {
             //return new SqlPersistenceFactory("EventStore", BuildSerializer()).Build();
-            //return new RavenInMemoryPersistenceFactory(store, BuildSerializer()).Build();
+            return new RavenPersistenceFactory(BootStrapper.RavenDbConnectionStringName, BuildSerializer()).Build();
             
-            return new InMemoryPersistenceEngine();
+            //return new InMemoryPersistenceEngine();
         }
 
         private ISerialize BuildSerializer()

@@ -17,8 +17,8 @@ namespace CQRSSample.App
     {
         static void Main()
         {
-            //currently it uses an inmemory event store and persists the read side (views) to RavenDB Server -> should change
-            var viewStore = new DocumentStore{ Url = "http://localhost:8080" };
+            //use RavenDB Server as an event store and persists the read side (views) also to RavenDB Server
+            var viewStore = new DocumentStore{ ConnectionStringName = BootStrapper.RavenDbConnectionStringName };
             viewStore.Initialize();
 
             //run RavenDB InMemory

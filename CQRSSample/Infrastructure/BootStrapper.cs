@@ -12,6 +12,8 @@ namespace CQRSSample.Infrastructure
 {
     public class BootStrapper
     {
+        public static readonly string RavenDbConnectionStringName = "RavenDB";
+
         public static IWindsorContainer BootStrap(IDocumentStore store)
         {
             var container = new WindsorContainer();
