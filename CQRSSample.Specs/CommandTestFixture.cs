@@ -1,12 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Castle.Core;
 using CommonDomain;
-using CQRSSample.CommandHandlers;
-using CQRSSample.Commands;
-using CQRSSample.Domain;
-using CQRSSample.Events;
+using CQRSSample.Domain.CommandHandlers;
+using CQRSSample.Domain.Commands;
+using CQRSSample.Domain.Events;
 using NUnit.Framework;
 
 namespace CQRSSample.Specs
@@ -39,7 +37,10 @@ namespace CQRSSample.Specs
             Repository = new FakeRepository();
             CaughtException = new ThereWasNoExceptionButOneWasExpectedException();
             AggregateRoot = new TAggregateRoot();
-            Given().ForEach(x => AggregateRoot.ApplyEvent(x));
+            foreach (var @event in Given())
+            {
+                AggregateRoot.ApplyEvent(@event);
+            }
 
             CommandHandler = BuildCommandHandler();
             SetupDependencies();
@@ -64,7 +65,7 @@ namespace CQRSSample.Specs
         private Handles<TCommand> BuildCommandHandler()
         {
             return Activator.CreateInstance(typeof(TCommandHandler), Repository) as TCommandHandler;
-        }        
+        }
     }
 
     public class ThereWasNoExceptionButOneWasExpectedException : Exception { }

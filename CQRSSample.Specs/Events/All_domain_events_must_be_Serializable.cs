@@ -1,6 +1,6 @@
 using System;
 using System.Linq;
-using CQRSSample.Events;
+using CQRSSample.Domain.Events;
 using NUnit.Framework;
 
 namespace CQRSSample.Specs.Events
@@ -11,7 +11,7 @@ namespace CQRSSample.Specs.Events
         [Test]
         public void All_domain_events_will_have_the_Serializable_attribute_assigned()
         {
-            var domainEventTypes = typeof(DomainEvent).Assembly.GetExportedTypes().Where(x => x.BaseType == typeof(DomainEvent)).ToList();
+            var domainEventTypes = typeof(CustomerCreatedEvent).Assembly.GetExportedTypes().Where(x => x.BaseType == typeof(DomainEvent)).ToList();
             foreach (var domainEventType in domainEventTypes)
             {
                 if (domainEventType.IsSerializable)

@@ -145,9 +145,17 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CQRSSample\CQRSSample.csproj">
-      <Project>{32B100A4-1313-4917-B210-5968AB783366}</Project>
-      <Name>CQRSSample</Name>
+    <ProjectReference Include="..\CQRSSample.Domain\CQRSSample.Domain.csproj">
+      <Project>{A9EE33AB-B226-491C-8F14-A78069618F21}</Project>
+      <Name>CQRSSample.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CQRSSample.Infrastructure\CQRSSample.Infrastructure.csproj">
+      <Project>{F2DE41A9-C7A9-433C-9217-EEA6EE859159}</Project>
+      <Name>CQRSSample.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CQRSSample.ReadModel\CQRSSample.ReadModel.csproj">
+      <Project>{6E654F57-BF65-463C-82C6-DB360D0F844D}</Project>
+      <Name>CQRSSample.ReadModel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

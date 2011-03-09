@@ -1,8 +1,10 @@
+// ReSharper disable InconsistentNaming
+
 using System;
-using CQRSSample.CommandHandlers;
-using CQRSSample.Commands;
-using CQRSSample.Domain;
-using CQRSSample.Events;
+using CQRSSample.Domain.CommandHandlers;
+using CQRSSample.Domain.Commands;
+using CQRSSample.Domain.Domain;
+using CQRSSample.Domain.Events;
 using NUnit.Framework;
 
 namespace CQRSSample.Specs.CustomerSpecs

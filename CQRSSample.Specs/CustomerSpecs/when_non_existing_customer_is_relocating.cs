@@ -1,7 +1,7 @@
 ﻿// ReSharper disable InconsistentNaming
 using System.Collections.Generic;
-using CQRSSample.Domain;
-using CQRSSample.Events;
+using CQRSSample.Domain.Domain;
+using CQRSSample.Domain.Events;
 using NUnit.Framework;
 
 namespace CQRSSample.Specs.CustomerSpecs

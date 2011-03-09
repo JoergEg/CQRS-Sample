@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-using CQRSSample.Events;
+using CQRSSample.Domain.Events;
 using System.Linq;
 using NUnit.Framework;
 
@@ -46,8 +46,8 @@ namespace CQRSSample.Specs
         public static void WithMessage(this Exception theException, string message)
         {
             Assert.AreEqual(message, theException.Message);
-        }        
-        
+        }
+
         public static TDomainEvent Last<TDomainEvent>(this ICollection events) where TDomainEvent : DomainEvent
         {
             return (TDomainEvent)events.Last();
@@ -61,13 +61,13 @@ namespace CQRSSample.Specs
         public static object LastMinus(this ICollection events, int minus)
         {
             return events.Cast<object>().ToList()[events.Count - 1 - minus];
-        }        
-        
+        }
+
         //public static TDomainEvent LastMinus<TDomainEvent>(this IEnumerable<DomainEvent> events, int minus)
         //{
         //    return (TDomainEvent)events.ToList()[events.Count() - 1 - minus];
         //}
-        
+
         public static TDomainEvent As<TDomainEvent>(this object theObject)
         {
             return (TDomainEvent)theObject;

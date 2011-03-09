@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using CQRSSample.Events;
-
 namespace CQRSSample.Specs
 {
     //public class FakeBus : IPublishMessages

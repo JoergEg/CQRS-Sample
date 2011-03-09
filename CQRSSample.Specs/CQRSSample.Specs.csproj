@@ -63,20 +63,16 @@
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Castle.Core, Version=2.5.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
     <Reference Include="CommonDomain">
       <HintPath>..\External Libs\CommonDomain\bin\CommonDomain.dll</HintPath>
+    </Reference>
+    <Reference Include="Machine.Specifications">
+      <HintPath>..\External Libs\MSpec\Machine.Specifications.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\External Libs\NUnit\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AggregateRootTestFixture.cs" />
@@ -91,9 +87,9 @@
     <Compile Include="CustomerSpecs\when_non_existing_customer_is_relocating.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CQRSSample\CQRSSample.csproj">
-      <Project>{32B100A4-1313-4917-B210-5968AB783366}</Project>
-      <Name>CQRSSample</Name>
+    <ProjectReference Include="..\CQRSSample.Domain\CQRSSample.Domain.csproj">
+      <Project>{A9EE33AB-B226-491C-8F14-A78069618F21}</Project>
+      <Name>CQRSSample.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

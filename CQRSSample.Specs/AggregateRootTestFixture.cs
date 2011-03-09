@@ -2,9 +2,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Castle.Core;
 using CommonDomain;
-using CQRSSample.Events;
+using CQRSSample.Domain.Events;
 using NUnit.Framework;
 
 namespace CQRSSample.Specs
@@ -23,7 +22,10 @@ namespace CQRSSample.Specs
         public void Setup()
         {
             Sut = new T();
-            Given().ForEach(x => Sut.ApplyEvent(x));
+            foreach (var @event in this.Given())
+            {
+                Sut.ApplyEvent(@event);
+            }
 
             try
             {
