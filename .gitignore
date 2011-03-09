@@ -7,7 +7,7 @@
 /CQRSSample.App/CQRSSample.App.csproj.user
 /CQRSSample.App/bin
 /CQRSSample.App/obj
-/CQRSSample.Specs/bin
-/CQRSSample.Specs/obj
+/CQRSSample.*/bin
+/CQRSSample.*/obj
 /External Libs/RavenDB/Server/Data
 /External Libs/RavenDB/Server/Raven.Server.log*
