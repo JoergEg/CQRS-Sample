@@ -4,7 +4,7 @@
 /CQRSSample.suo
 /CQRSSample/bin
 /CQRSSample/obj
-/CQRSSample.App/CQRSSample.App.csproj.user
+*.csproj.user
 /CQRSSample.App/bin
 /CQRSSample.App/obj
 /CQRSSample.*/bin
