@@ -63,14 +63,8 @@
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CommonDomain">
-      <HintPath>..\External Libs\CommonDomain\bin\CommonDomain.dll</HintPath>
-    </Reference>
     <Reference Include="Machine.Specifications">
       <HintPath>..\External Libs\MSpec\Machine.Specifications.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>..\External Libs\NUnit\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
@@ -85,12 +79,6 @@
     <Compile Include="TestExtensions.cs" />
     <Compile Include="CustomerSpecs\when_creating_a_new_customer.cs" />
     <Compile Include="CustomerSpecs\when_non_existing_customer_is_relocating.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CQRSSample.Domain\CQRSSample.Domain.csproj">
-      <Project>{A9EE33AB-B226-491C-8F14-A78069618F21}</Project>
-      <Name>CQRSSample.Domain</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
