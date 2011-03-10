@@ -8,8 +8,8 @@
                 <ResourceDictionary>
                     <local:WpfClientBootstrapper x:Key="bootstrapper" />
                 </ResourceDictionary>
+                <ResourceDictionary Source="UI\Themes\BureauBlack.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-
     </Application.Resources>
 </Application>
