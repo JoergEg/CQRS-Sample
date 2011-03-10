@@ -46,6 +46,9 @@
     <Reference Include="Castle.Windsor">
       <HintPath>..\External Libs\Castle Windsor\dotNet40\Castle.Windsor.dll</HintPath>
     </Reference>
+    <Reference Include="EventStore.Persistence.RavenPersistence">
+      <HintPath>..\External Libs\CommonDomain\bin\EventStore.Persistence.RavenPersistence.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Interactivity">
@@ -69,10 +72,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Infrastructure\Installers\ViewModelInstaller.cs" />
-    <Compile Include="UI\Shell\ShellView.xaml.cs">
+    <Compile Include="Modules\CustomerList\CustomerListScreen.cs" />
+    <Compile Include="Modules\CustomerList\CustomerListView.xaml.cs">
+      <DependentUpon>CustomerListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Shell\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Shell\ShellViewModel.cs" />
+    <Compile Include="Modules\Shell\ShellViewModel.cs" />
     <Compile Include="WpfClientBootstrapper.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -101,38 +108,58 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="UI\Shell\ShellView.xaml">
+    <Page Include="Modules\CustomerList\CustomerListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Themes\BureauBlack.xaml">
+    <Page Include="Modules\Shell\ShellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\BureauBlack.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Themes\BureauBlue.xaml">
+    <Page Include="Themes\BureauBlue.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Themes\ExpressionDark.xaml">
+    <Page Include="Themes\ExpressionDark.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Themes\ExpressionLight.xaml">
+    <Page Include="Themes\ExpressionLight.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Themes\ShinyBlue.xaml">
+    <Page Include="Themes\ShinyBlue.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Themes\ShinyRed.xaml">
+    <Page Include="Themes\ShinyRed.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\Themes\WhistlerBlue.xaml">
+    <Page Include="Themes\WhistlerBlue.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ApplicationFramework\Controls\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CQRSSample.Infrastructure\CQRSSample.Infrastructure.csproj">
+      <Project>{F2DE41A9-C7A9-433C-9217-EEA6EE859159}</Project>
+      <Name>CQRSSample.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CQRSSample.ReadModel\CQRSSample.ReadModel.csproj">
+      <Project>{6E654F57-BF65-463C-82C6-DB360D0F844D}</Project>
+      <Name>CQRSSample.ReadModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ApplicationFramework\Icons\customers.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

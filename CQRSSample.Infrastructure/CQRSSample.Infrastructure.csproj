@@ -60,6 +60,7 @@
     <Compile Include="Installers\CommandHandlerInstaller.cs" />
     <Compile Include="Installers\EventHandlerHelper.cs" />
     <Compile Include="Installers\EventStoreInstaller.cs" />
+    <Compile Include="Installers\ReadRepositoryInstaller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -39,6 +39,7 @@
   <ItemGroup>
     <Compile Include="CustomerListView.cs" />
     <Compile Include="HandlesEvent.cs" />
+    <Compile Include="IReadRepository.cs" />
     <Compile Include="IReportingRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

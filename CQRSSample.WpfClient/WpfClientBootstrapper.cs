@@ -5,7 +5,9 @@ using Caliburn.Micro;
 using Castle.Core;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
-using CQRSSample.WpfClient.UI.Shell;
+using CQRSSample.Infrastructure;
+using CQRSSample.WpfClient.Modules.Shell;
+using Raven.Client.Document;
 
 namespace CQRSSample.WpfClient
 {
@@ -15,7 +17,10 @@ namespace CQRSSample.WpfClient
 
         protected override void Configure()
         {
-            _container = new WindsorContainer();
+            var viewStore = new DocumentStore{ ConnectionStringName = BootStrapper.RavenDbConnectionStringName };
+            viewStore.Initialize();
+
+            _container = BootStrapper.BootStrap(viewStore);
             // adds and configures all components using WindsorInstallers from executing assembly  
             _container.Install(FromAssembly.This());
         }
