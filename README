@@ -1,9 +1,11 @@
-CQRS Sample with eventsourcing, RavenDB is used as the eventstore and for the read side.
-The sample client is a console application and uses RavenDB in server mode - don't forget to start RavenDB.Server.exe
+CQRS Sample with eventsourcing. RavenDB is used as the eventstore and for the read side.
+There are two sample clients: one WPF Client with a nice UI and one console application for a quick start. 
+It uses RavenDB in server mode - don't forget to start RavenDB.Server.exe
 
-Visual Studio 2010 Solution on .Net Framework 4.
+Visual Studio 2010 Solution using .Net Framework 4.
 
 It's based on samples by Mark Nijhof: https://github.com/MarkNijhof/Fohjin
 Greg Young: http://github.com/gregoryyoung/m-r
 http://dddsamplenet.codeplex.com/
 and uses the eventstore and commondomain libraries by Jonathan Oliver: https://github.com/joliver/
+The WPF Client uses Caliburn.Micro: http://caliburnmicro.codeplex.com/
