@@ -5,17 +5,19 @@ namespace CQRSSample.Domain.Commands
     [Serializable]
     public class CreateCustomerCommand : Command
     {
-        public readonly string ClientName;
-        public readonly string Street;
-        public readonly string StreetNumber;
-        public readonly string PostalCode;
-        public readonly string City;
-        public readonly string PhoneNumber;
+        public string CustomerName { get; set; }
+        public string Street { get; set; }
+        public string StreetNumber { get; set; }
+        public string PostalCode { get; set; }
+        public string City { get; set; }
+        public string PhoneNumber { get; set; }
 
-        public CreateCustomerCommand(Guid id, string clientName, string street, string streetNumber, string postalCode, string city, string phoneNumber)
+        public CreateCustomerCommand(Guid id) : base(id){}
+
+        public CreateCustomerCommand(Guid id, string customerName, string street, string streetNumber, string postalCode, string city, string phoneNumber)
             : base(id)
         {
-            ClientName = clientName;
+            CustomerName = customerName;
             Street = street;
             StreetNumber = streetNumber;
             PostalCode = postalCode;

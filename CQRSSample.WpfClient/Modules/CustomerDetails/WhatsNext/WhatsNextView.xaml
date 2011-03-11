@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="CQRSSample.WpfClient.Modules.CustomerDetails.WhatsNext.WhatsNextView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="600">
+    <StackPanel HorizontalAlignment="Center">
+        <StackPanel Margin="0 0 0 20">
+            <TextBlock FontSize="40" FontWeight="ExtraLight">What's your next task?</TextBlock>
+            <TextBlock HorizontalAlignment="Right" FontWeight="ExtraLight">Favourite tasks for customer</TextBlock>
+        </StackPanel>
+        <Button Margin="10" Width="200" x:Name="SearchCustomer">Search Customer</Button>
+        <Button Margin="10" Width="200" x:Name="AddCustomer">Add another customer</Button>
+    </StackPanel>
+</UserControl>

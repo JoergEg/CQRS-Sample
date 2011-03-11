@@ -49,6 +49,11 @@
     <Reference Include="EventStore.Persistence.RavenPersistence">
       <HintPath>..\External Libs\CommonDomain\bin\EventStore.Persistence.RavenPersistence.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Windows.Shell, Version=3.5.41019.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="RibbonControlsLibrary, Version=3.5.41019.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External Libs\Microsoft Ribbon for WPF\V4.0\RibbonControlsLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Interactivity">
@@ -58,6 +63,9 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -71,8 +79,25 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ApplicationFramework\Converters\CollapsedWhenNullConverter.cs" />
     <Compile Include="Infrastructure\Installers\ViewModelInstaller.cs" />
-    <Compile Include="Modules\CustomerList\CustomerListScreen.cs" />
+    <Compile Include="Modules\CustomerDetails\CreateCustomer\CreateCustomerView.xaml.cs">
+      <DependentUpon>CreateCustomerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\CustomerDetails\CreateCustomer\CreateCustomerViewModel.cs" />
+    <Compile Include="Modules\CustomerDetails\CustomerDetailsOverview\CustomerDetailsOverviewView.xaml.cs">
+      <DependentUpon>CustomerDetailsOverviewView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\CustomerDetails\CustomerDetailsOverview\CustomerDetailsOverviewViewModel.cs" />
+    <Compile Include="Modules\CustomerDetails\CustomerRelocating\CustomerRelocatingView.xaml.cs">
+      <DependentUpon>CustomerRelocatingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\CustomerDetails\CustomerRelocating\CustomerRelocatingViewModel.cs" />
+    <Compile Include="Modules\CustomerDetails\WhatsNext\WhatsNextView.xaml.cs">
+      <DependentUpon>WhatsNextView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\CustomerDetails\WhatsNext\WhatsNextViewModel.cs" />
+    <Compile Include="Modules\CustomerList\CustomerListViewModel.cs" />
     <Compile Include="Modules\CustomerList\CustomerListView.xaml.cs">
       <DependentUpon>CustomerListView.xaml</DependentUpon>
     </Compile>
@@ -108,6 +133,26 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="ApplicationFramework\Resources\ConverterResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Modules\CustomerDetails\CreateCustomer\CreateCustomerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Modules\CustomerDetails\CustomerDetailsOverview\CustomerDetailsOverviewView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Modules\CustomerDetails\CustomerRelocating\CustomerRelocatingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Modules\CustomerDetails\WhatsNext\WhatsNextView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Modules\CustomerList\CustomerListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -149,6 +194,10 @@
     <Folder Include="ApplicationFramework\Controls\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CQRSSample.Domain\CQRSSample.Domain.csproj">
+      <Project>{A9EE33AB-B226-491C-8F14-A78069618F21}</Project>
+      <Name>CQRSSample.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CQRSSample.Infrastructure\CQRSSample.Infrastructure.csproj">
       <Project>{F2DE41A9-C7A9-433C-9217-EEA6EE859159}</Project>
       <Name>CQRSSample.Infrastructure</Name>

@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="CQRSSample.WpfClient.Modules.CustomerDetails.CustomerDetailsOverview.CustomerDetailsOverviewView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="600">
+    <StackPanel HorizontalAlignment="Center">
+        <StackPanel VerticalAlignment="Center" Margin="0 0 0 20">
+            <TextBlock FontSize="40" FontWeight="ExtraLight" Text="{Binding ViewModel.Name}" />
+            <TextBlock HorizontalAlignment="Right" FontWeight="ExtraLight">All you want to know about your cusomter</TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Margin="0 0 2 0">Now living in</TextBlock>
+            <TextBlock Text="{Binding ViewModel.City}"></TextBlock>
+        </StackPanel>
+        <Button x:Name="RelocateCustomer" Width="200" Margin="0 20 0 0">Customer relocated</Button>
+    </StackPanel>
+</UserControl>

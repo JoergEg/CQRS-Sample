@@ -5,10 +5,12 @@ namespace CQRSSample.Domain.Commands
     [Serializable]
     public class RelocatingCustomerCommand : Command
     {
-        public readonly string Street;
-        public readonly string Streetnumber;
-        public readonly string PostalCode;
-        public readonly string City;
+        public string Street { get; set; }
+        public string Streetnumber { get; set; }
+        public string PostalCode { get; set; }
+        public string City { get; set; }
+
+        public RelocatingCustomerCommand(Guid id) : base(id){}
 
         public RelocatingCustomerCommand(Guid id, string street, string streetNumber, string postalCode, string city) : base(id)
         {

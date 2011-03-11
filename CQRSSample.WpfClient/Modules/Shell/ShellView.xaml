@@ -3,12 +3,32 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
+            xmlns:ribbon="clr-namespace:Microsoft.Windows.Controls.Ribbon;assembly=RibbonControlsLibrary"
             Title="CQRS Sample Client"
              d:DesignHeight="300" d:DesignWidth="300">
     <StackPanel>
+
+
+        <ribbon:Ribbon>
+            <ribbon:Ribbon.ApplicationMenu>
+                <ribbon:RibbonApplicationMenu SmallImageSource="..\..\ApplicationFramework\Icons\customers.png">
+                    <ribbon:RibbonApplicationMenuItem Header="Hello _Ribbon" ImageSource="..\..\ApplicationFramework\Icons\customers.png"/>
+                </ribbon:RibbonApplicationMenu>
+            </ribbon:Ribbon.ApplicationMenu>
+
+            <ribbon:RibbonTab x:Name="HomeTab" Header="Home">
+                <ribbon:RibbonGroup Header="Search">
+                    <ribbon:RibbonButton x:Name="SearchCustomer" LargeImageSource="..\..\ApplicationFramework\Icons\customers.png" Label="Customer search" />
+                </ribbon:RibbonGroup>
+                <ribbon:RibbonGroup Header="Customer Details">
+                    <ribbon:RibbonButton x:Name="AddNewCustomer" LargeImageSource="..\..\ApplicationFramework\Icons\customers.png" Label="Add new customer" />
+                </ribbon:RibbonGroup>
+            </ribbon:RibbonTab>
+
+        </ribbon:Ribbon>
         
 
-        <ContentControl x:Name="ActiveItem" />
+        <ContentControl x:Name="ActiveItem" Margin="0 20 0 0" />
 
     </StackPanel>
 </Window>

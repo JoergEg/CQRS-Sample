@@ -6,9 +6,11 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
+                    <!-- don't forget to start RavenDB\Server\Raven.Server.exe -->
                     <local:WpfClientBootstrapper x:Key="bootstrapper" />
                 </ResourceDictionary>
-                <ResourceDictionary Source="Themes\ExpressionDark.xaml"/>
+                <ResourceDictionary Source="Themes\ExpressionDark.xaml" />
+                <ResourceDictionary Source="ApplicationFramework\Resources\ConverterResource.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

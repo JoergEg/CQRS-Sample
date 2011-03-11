@@ -16,7 +16,7 @@ namespace CQRSSample.Domain.CommandHandlers
 
         public void Handle(CreateCustomerCommand command)
         {
-            var client = Customer.CreateNew(command.Id, new CustomerName(command.ClientName),
+            var client = Customer.CreateNew(command.Id, new CustomerName(command.CustomerName),
                                           new Address(command.Street, command.StreetNumber,
                                                       command.PostalCode, command.City),
                                           new PhoneNumber(command.PhoneNumber));
