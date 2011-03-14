@@ -8,12 +8,11 @@
     <StackPanel HorizontalAlignment="Center">
         <StackPanel VerticalAlignment="Center" Margin="0 0 0 20">
             <TextBlock FontSize="40" FontWeight="ExtraLight" Text="{Binding ViewModel.Name}" />
-            <TextBlock HorizontalAlignment="Right" FontWeight="ExtraLight">All you want to know about your cusomter</TextBlock>
+            <TextBlock HorizontalAlignment="Right" FontWeight="ExtraLight">All you want to know about your customer</TextBlock>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <TextBlock Margin="0 0 2 0">Now living in</TextBlock>
             <TextBlock Text="{Binding ViewModel.City}"></TextBlock>
         </StackPanel>
-        <Button x:Name="RelocateCustomer" Width="200" Margin="0 20 0 0">Customer relocated</Button>
     </StackPanel>
 </UserControl>

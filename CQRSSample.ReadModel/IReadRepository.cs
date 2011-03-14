@@ -7,7 +7,7 @@ namespace CQRSSample.ReadModel
     public interface IReadRepository
     {
         IQueryable<T> GetAll<T>() where T : class;
-        T GetById<T>(Guid id) where T : class;
+        T GetById<T>(string id) where T : class;
     }
 
     public class RavenReadRepository : IReadRepository
@@ -27,11 +27,11 @@ namespace CQRSSample.ReadModel
             }
         }
 
-        public T GetById<T>(Guid id) where T : class
+        public T GetById<T>(string id) where T : class
         {
             using (var session = _documentStore.OpenSession())
             {
-                return session.Load<T>(id.ToString());
+                return session.Load<T>(id);
             }
         }
     }

@@ -37,6 +37,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomerAddressView.cs" />
     <Compile Include="CustomerListView.cs" />
     <Compile Include="HandlesEvent.cs" />
     <Compile Include="IReadRepository.cs" />

@@ -19,16 +19,25 @@ namespace CQRSSample.WpfClient.Modules.CustomerDetails.CustomerRelocating
             _eventAggregator = eventAggregator;
             _readRepository = readRepository;
 
+            //TODO: Resolve through IoC Container
             Validator = new RelocatingCustomerValidator();
         }
 
         public void WithCustomer(Guid customerId)
         {
-            ViewModel = _readRepository.GetById<CustomerListDto>(customerId);
-            Command = new ValidatingCommand<RelocatingCustomerCommand>(new RelocatingCustomerCommand(ViewModel.Id), Validator);
+            ViewModel = _readRepository.GetById<CustomerAddressDto>(Dto.GetDtoIdOf<CustomerAddressDto>(customerId));
+            Command = new ValidatingCommand<RelocatingCustomerCommand>(new RelocatingCustomerCommand(ViewModel.AggregateRootId), Validator);
         }
 
-        public CustomerListDto ViewModel { get; private set; }
+        public CustomerAddressDto ViewModel { get; private set; }
+
+        public string Address
+        {
+            get
+            {
+                return string.Format("{0} {1}, {2} {3}", ViewModel.Street, ViewModel.StreetNumber, ViewModel.PostalCode, ViewModel.City);
+            }
+        }
 
         public void Save()
         {

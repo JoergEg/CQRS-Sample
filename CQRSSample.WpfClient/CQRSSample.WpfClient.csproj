@@ -99,6 +99,7 @@
       <DependentUpon>CustomerRelocatingView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Modules\CustomerDetails\CustomerRelocating\CustomerRelocatingViewModel.cs" />
+    <Compile Include="Modules\CustomerDetails\IShowCustomerDetails.cs" />
     <Compile Include="Modules\CustomerDetails\WhatsNext\WhatsNextView.xaml.cs">
       <DependentUpon>WhatsNextView.xaml</DependentUpon>
     </Compile>
@@ -140,10 +141,6 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="ApplicationFramework\Resources\ConverterResource.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ApplicationFramework\Resources\Style.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -227,6 +224,9 @@
   <ItemGroup>
     <Resource Include="ApplicationFramework\Icons\customer.png" />
     <Resource Include="ApplicationFramework\Icons\no.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ApplicationFramework\Icons\relocate.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

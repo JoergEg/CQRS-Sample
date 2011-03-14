@@ -22,6 +22,7 @@
                 </ribbon:RibbonGroup>
                 <ribbon:RibbonGroup Header="Customer Details">
                     <ribbon:RibbonButton x:Name="AddNewCustomer" LargeImageSource="..\..\ApplicationFramework\Icons\customer.png" Label="Add new customer" />
+                    <ribbon:RibbonButton x:Name="RelocateCustomer" Visibility="{Binding ShowCustomerDetailButtons, Converter={StaticResource booleanToVisibility}}" LargeImageSource="..\..\ApplicationFramework\Icons\relocate.png" Label="Customer relocated" />
                 </ribbon:RibbonGroup>
             </ribbon:RibbonTab>
 

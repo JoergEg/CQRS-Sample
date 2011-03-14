@@ -63,7 +63,7 @@ namespace CQRSSample.App
             {
                 foreach(var dto in session.Query<CustomerListDto>())
                 {
-                    Console.WriteLine(dto.Name + " now living in " + dto.City + " (" + dto.Id + ")");
+                    Console.WriteLine(dto.Name + " now living in " + dto.City + " (" + dto.AggregateRootId + ")");
                     Console.WriteLine("---");
                 }
             }

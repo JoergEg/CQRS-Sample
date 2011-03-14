@@ -59,11 +59,11 @@ namespace CQRSSample.WpfClient.Modules.CustomerList
 
     public class ShowCustomerDetailsEvent
     {
-        public readonly Guid Id;
+        public readonly string DtoId;
 
-        public ShowCustomerDetailsEvent(Guid id)
+        public ShowCustomerDetailsEvent(string dtoId)
         {
-            Id = id;
+            DtoId = dtoId;
         }
     }
 }

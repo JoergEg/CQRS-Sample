@@ -3,5 +3,6 @@
                     xmlns:Converters="clr-namespace:CQRSSample.WpfClient.ApplicationFramework.Converters">
 
     <Converters:CollapsedWhenNullConverter x:Key="collapsedWhenNullConverter" />
+    <BooleanToVisibilityConverter x:Key="booleanToVisibility" />
     
 </ResourceDictionary>

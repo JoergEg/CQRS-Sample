@@ -17,7 +17,7 @@ namespace CQRSSample.ReadModel
         {
             using (var session = _documentStore.OpenSession())
             {
-                var dto = session.Load<CustomerListDto>(@event.AggregateId.ToString());
+                var dto = session.Load<CustomerListDto>(Dto.GetDtoIdOf<CustomerListDto>(@event.AggregateId));
                 dto.City = @event.City;
                 session.SaveChanges();
             }
@@ -27,19 +27,37 @@ namespace CQRSSample.ReadModel
         {
             using(var session = _documentStore.OpenSession())
             {
-                var dto = new CustomerListDto { Id = @event.AggregateId, City = @event.City, Name = @event.CustomerName };
+                var dto = new CustomerListDto { AggregateRootId = @event.AggregateId, City = @event.City, Name = @event.CustomerName };
                 session.Store(dto);
                 session.SaveChanges();
             }
         }
     }
 
-    public class CustomerListDto
+    public class CustomerListDto : Dto
     {
-        public Guid Id { get; set; }
-
         public string City { get; set; }
 
         public string Name { get; set; }
+    }
+
+    public abstract class Dto
+    {
+        public string Id
+        {
+            get { return GetDtoIdOf(AggregateRootId, GetType()); }
+        }
+
+        public Guid AggregateRootId { get; set; }
+
+        public static string GetDtoIdOf<T>(Guid id) where T : Dto
+        {
+            return GetDtoIdOf(id, typeof (T));
+        }
+
+        public static string GetDtoIdOf(Guid id, Type type)
+        {
+            return type.Name + "/" + id;
+        }
     }
 }

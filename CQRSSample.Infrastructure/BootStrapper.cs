@@ -32,9 +32,15 @@ namespace CQRSSample.Infrastructure
 
         private static void SetupDomainEventHandlers(IBus bus, IDocumentStore documentStore)
         {
+            //TODO: Resolve through IoC
+
             var view = new CustomerListView(documentStore);
             bus.RegisterHandler<CustomerCreatedEvent>(view.Handle);
             bus.RegisterHandler<CustomerRelocatedEvent>(view.Handle);
+
+            var addressView = new CustomerAddressView(documentStore);
+            bus.RegisterHandler<CustomerCreatedEvent>(addressView.Handle);
+            bus.RegisterHandler<CustomerRelocatedEvent>(addressView.Handle);
         }
     }
 

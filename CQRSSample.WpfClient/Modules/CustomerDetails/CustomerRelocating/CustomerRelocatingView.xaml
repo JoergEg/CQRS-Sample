@@ -6,6 +6,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="600">
     <StackPanel>
+        <TextBlock>Address:</TextBlock>
+        <TextBlock x:Name="Address"></TextBlock>
+        <Separator />
         <StackPanel Orientation="Horizontal" Margin="10">
             <TextBlock Margin="0 0 10 0">Street:</TextBlock>
             <TextBox Text="{Binding Command.Street}" Width="400" />
