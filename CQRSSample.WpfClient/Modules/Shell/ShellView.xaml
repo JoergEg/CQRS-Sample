@@ -21,7 +21,7 @@
                     <ribbon:RibbonButton x:Name="SearchCustomer" LargeImageSource="..\..\ApplicationFramework\Icons\customers.png" Label="Customer search" />
                 </ribbon:RibbonGroup>
                 <ribbon:RibbonGroup Header="Customer Details">
-                    <ribbon:RibbonButton x:Name="AddNewCustomer" LargeImageSource="..\..\ApplicationFramework\Icons\customers.png" Label="Add new customer" />
+                    <ribbon:RibbonButton x:Name="AddNewCustomer" LargeImageSource="..\..\ApplicationFramework\Icons\customer.png" Label="Add new customer" />
                 </ribbon:RibbonGroup>
             </ribbon:RibbonTab>
 

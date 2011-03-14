@@ -84,6 +84,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ApplicationFramework\Converters\CollapsedWhenNullConverter.cs" />
+    <Compile Include="ApplicationFramework\ScreenWithValidatingCommand.cs" />
+    <Compile Include="ApplicationFramework\ValidatingCommand.cs" />
     <Compile Include="Infrastructure\Installers\ViewModelInstaller.cs" />
     <Compile Include="Modules\CustomerDetails\CreateCustomer\CreateCustomerView.xaml.cs">
       <DependentUpon>CreateCustomerView.xaml</DependentUpon>
@@ -221,6 +223,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ApplicationFramework\Icons\customers.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ApplicationFramework\Icons\customer.png" />
+    <Resource Include="ApplicationFramework\Icons\no.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

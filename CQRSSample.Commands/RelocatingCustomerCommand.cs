@@ -1,4 +1,5 @@
 ﻿using System;
+using FluentValidation;
 
 namespace CQRSSample.Commands
 {
@@ -18,6 +19,14 @@ namespace CQRSSample.Commands
             Streetnumber = streetNumber;
             PostalCode = postalCode;
             City = city;
+        }
+    }
+
+    public class RelocatingCustomerValidator : AbstractValidator<RelocatingCustomerCommand>
+    {
+        public RelocatingCustomerValidator()
+        {
+            RuleFor(command => command.City).NotEmpty().NotNull();
         }
     }
 }

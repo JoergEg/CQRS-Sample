@@ -34,11 +34,13 @@
     <Reference Include="FluentValidation">
       <HintPath>..\External Libs\FluentValidation\FluentValidation.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Command.cs" />
     <Compile Include="CreateCustomerCommand.cs" />
+    <Compile Include="DynamicCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RelocatingCustomerCommand.cs" />
   </ItemGroup>
