@@ -5,7 +5,7 @@
 
 using System;
 using Castle.Windsor;
-using CQRSSample.Domain.Commands;
+using CQRSSample.Commands;
 using CQRSSample.Infrastructure;
 using CQRSSample.ReadModel;
 using Raven.Client;

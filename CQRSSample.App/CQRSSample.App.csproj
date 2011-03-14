@@ -145,6 +145,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CQRSSample.Commands\CQRSSample.Commands.csproj">
+      <Project>{22374340-0C08-4F74-86B7-6C229BE1E550}</Project>
+      <Name>CQRSSample.Commands</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CQRSSample.Domain\CQRSSample.Domain.csproj">
       <Project>{A9EE33AB-B226-491C-8F14-A78069618F21}</Project>
       <Name>CQRSSample.Domain</Name>

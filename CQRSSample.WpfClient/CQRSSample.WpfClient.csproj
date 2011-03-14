@@ -49,6 +49,10 @@
     <Reference Include="EventStore.Persistence.RavenPersistence">
       <HintPath>..\External Libs\CommonDomain\bin\EventStore.Persistence.RavenPersistence.dll</HintPath>
     </Reference>
+    <Reference Include="FluentValidation">
+      <HintPath>..\External Libs\FluentValidation\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Windows.Shell, Version=3.5.41019.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="RibbonControlsLibrary, Version=3.5.41019.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -137,6 +141,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ApplicationFramework\Resources\Style.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Modules\CustomerDetails\CreateCustomer\CreateCustomerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -194,6 +202,10 @@
     <Folder Include="ApplicationFramework\Controls\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CQRSSample.Commands\CQRSSample.Commands.csproj">
+      <Project>{22374340-0C08-4F74-86B7-6C229BE1E550}</Project>
+      <Name>CQRSSample.Commands</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CQRSSample.Domain\CQRSSample.Domain.csproj">
       <Project>{A9EE33AB-B226-491C-8F14-A78069618F21}</Project>
       <Name>CQRSSample.Domain</Name>

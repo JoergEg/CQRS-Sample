@@ -11,6 +11,7 @@
                 </ResourceDictionary>
                 <ResourceDictionary Source="Themes\ExpressionDark.xaml" />
                 <ResourceDictionary Source="ApplicationFramework\Resources\ConverterResource.xaml" />
+                <ResourceDictionary Source="ApplicationFramework\Resources\Style.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

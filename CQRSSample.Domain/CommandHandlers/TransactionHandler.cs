@@ -1,4 +1,4 @@
-using CQRSSample.Domain.Commands;
+using CQRSSample.Commands;
 
 namespace CQRSSample.Domain.CommandHandlers
 {

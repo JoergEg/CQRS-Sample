@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{9D95
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRSSample.WpfClient", "CQRSSample.WpfClient\CQRSSample.WpfClient.csproj", "{00697C09-EF1D-4F73-8AFD-D58B8A550111}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRSSample.Commands", "CQRSSample.Commands\CQRSSample.Commands.csproj", "{22374340-0C08-4F74-86B7-6C229BE1E550}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +93,16 @@ Global
 		{00697C09-EF1D-4F73-8AFD-D58B8A550111}.Release|Mixed Platforms.Build.0 = Release|x86
 		{00697C09-EF1D-4F73-8AFD-D58B8A550111}.Release|x86.ActiveCfg = Release|x86
 		{00697C09-EF1D-4F73-8AFD-D58B8A550111}.Release|x86.Build.0 = Release|x86
+		{22374340-0C08-4F74-86B7-6C229BE1E550}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22374340-0C08-4F74-86B7-6C229BE1E550}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22374340-0C08-4F74-86B7-6C229BE1E550}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{22374340-0C08-4F74-86B7-6C229BE1E550}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{22374340-0C08-4F74-86B7-6C229BE1E550}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{22374340-0C08-4F74-86B7-6C229BE1E550}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22374340-0C08-4F74-86B7-6C229BE1E550}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22374340-0C08-4F74-86B7-6C229BE1E550}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{22374340-0C08-4F74-86B7-6C229BE1E550}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{22374340-0C08-4F74-86B7-6C229BE1E550}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

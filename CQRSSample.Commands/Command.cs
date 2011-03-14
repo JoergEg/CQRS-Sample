@@ -1,6 +1,6 @@
 using System;
 
-namespace CQRSSample.Domain.Commands
+namespace CQRSSample.Commands
 {
     public abstract class Command
     {

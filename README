@@ -3,6 +3,7 @@ There are two sample clients: one WPF Client with a nice UI and one console appl
 It uses RavenDB in server mode - don't forget to start RavenDB.Server.exe
 
 Visual Studio 2010 Solution using .Net Framework 4.
+Set the project CQRSSample.WpfClient as you start-project.
 
 It's based on samples by Mark Nijhof: https://github.com/MarkNijhof/Fohjin
 Greg Young: http://github.com/gregoryyoung/m-r

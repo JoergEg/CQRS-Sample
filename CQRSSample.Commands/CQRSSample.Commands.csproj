@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A9EE33AB-B226-491C-8F14-A78069618F21}</ProjectGuid>
+    <ProjectGuid>{22374340-0C08-4F74-86B7-6C229BE1E550}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CQRSSample.Domain</RootNamespace>
-    <AssemblyName>CQRSSample.Domain</AssemblyName>
+    <RootNamespace>CQRSSample.Commands</RootNamespace>
+    <AssemblyName>CQRSSample.Commands</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,27 +31,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CommonDomain">
-      <HintPath>..\External Libs\CommonDomain\bin\CommonDomain.dll</HintPath>
+    <Reference Include="FluentValidation">
+      <HintPath>..\External Libs\FluentValidation\FluentValidation.dll</HintPath>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandHandlers\CreateCustomerCommandHandler.cs" />
-    <Compile Include="CommandHandlers\RelocatingCustomerCommandHandler.cs" />
-    <Compile Include="CommandHandlers\Handles.cs" />
-    <Compile Include="CommandHandlers\TransactionHandler.cs" />
-    <Compile Include="Domain\Customer.cs" />
-    <Compile Include="Events\CustomerCreatedEvent.cs" />
-    <Compile Include="Events\CustomerRelocatedEvent.cs" />
-    <Compile Include="Events\DomainEvent.cs" />
+    <Compile Include="Command.cs" />
+    <Compile Include="CreateCustomerCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CQRSSample.Commands\CQRSSample.Commands.csproj">
-      <Project>{22374340-0C08-4F74-86B7-6C229BE1E550}</Project>
-      <Name>CQRSSample.Commands</Name>
-    </ProjectReference>
+    <Compile Include="RelocatingCustomerCommand.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

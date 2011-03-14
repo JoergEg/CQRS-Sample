@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CQRSSample.Domain.Commands
+namespace CQRSSample.Commands
 {
     [Serializable]
     public class RelocatingCustomerCommand : Command

@@ -1,6 +1,6 @@
 using System;
 using CommonDomain.Persistence;
-using CQRSSample.Domain.Commands;
+using CQRSSample.Commands;
 using CQRSSample.Domain.Domain;
 
 namespace CQRSSample.Domain.CommandHandlers

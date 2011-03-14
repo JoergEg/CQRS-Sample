@@ -1,6 +1,6 @@
 using System;
 using Caliburn.Micro;
-using CQRSSample.Domain.Commands;
+using CQRSSample.Commands;
 using CQRSSample.Infrastructure;
 
 namespace CQRSSample.WpfClient.Modules.CustomerDetails.CreateCustomer
