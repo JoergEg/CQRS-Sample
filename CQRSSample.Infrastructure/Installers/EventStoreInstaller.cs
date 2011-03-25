@@ -24,10 +24,7 @@ namespace CQRSSample.Infrastructure.Installers
         {
             //Bus
             var bus = new InProcessBus(container);
-            //container.Register(Component.For<IBus>().ImplementedBy<InProcessBus>().LifeStyle.Singleton);
             container.Register(Component.For<IBus>().Instance(bus));
-            //container.Register(Component.For<IPublishMessages>().Instance(bus));
-
 
             var eventStore = GetInitializedEventStore(bus);
             var repository = new EventStoreRepository(eventStore, new AggregateFactory(), new ConflictDetector());
@@ -38,19 +35,11 @@ namespace CQRSSample.Infrastructure.Installers
 
         private IStoreEvents GetInitializedEventStore(IPublishMessages bus)
         {
-            var persistence = BuildPersistenceEngine();
-            persistence.Initialize();
-
-            var dispatcher = BuildDispatcher(bus, persistence);
-            return new OptimisticEventStore(persistence, dispatcher);
-        }
-
-        private IPersistStreams BuildPersistenceEngine()
-        {
-            //return new SqlPersistenceFactory("EventStore", BuildSerializer()).Build();
-            return new RavenPersistenceFactory(BootStrapper.RavenDbConnectionStringName, BuildSerializer()).Build();
-            
-            //return new InMemoryPersistenceEngine();
+            return Wireup.Init()
+                //.UsingRavenPersistence(BootStrapper.RavenDbConnectionStringName, new ByteStreamDocumentSerializer(BuildSerializer()))
+                .UsingRavenPersistence(BootStrapper.RavenDbConnectionStringName, new NullDocumentSerializer())
+                .UsingSynchronousDispatcher(bus)
+                .Build();
         }
 
         private ISerialize BuildSerializer()
@@ -58,28 +47,6 @@ namespace CQRSSample.Infrastructure.Installers
             var serializer = new JsonSerializer() as ISerialize;
             serializer = new GzipSerializer(serializer);
             return new RijndaelSerializer(serializer, _encryptionKey);
-        }
-
-        private IDispatchCommits BuildDispatcher(IPublishMessages bus, IPersistStreams persistence)
-        {
-            //return new AsynchronousDispatcher(
-            //    new DelegateMessagePublisher(DispatchCommit),
-            //    persistence,
-            //    OnDispatchError);
-
-            return new SynchronousDispatcher(bus, persistence);
-        }
-
-        private void DispatchCommit(Commit commit)
-        {
-            // this is where we'd hook into our messaging infrastructure, e.g. NServiceBus.
-            Console.WriteLine("Messages from commit have been published.");
-        }
-        private static void OnDispatchError(Commit commit, Exception exception)
-        {
-            // if for some reason our messaging infrastructure couldn't dispatch the messages we've committed
-            // we would be alerted here.
-            Console.WriteLine("Exception while publishing message");
         }
     }
 }
